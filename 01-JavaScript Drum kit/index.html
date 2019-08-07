@@ -60,40 +60,44 @@
     <audio data-key=76 id="audio76" src="sounds/tink.wav"></audio>
 
     <script>
-        (function () {
+       (function(){
+
+        window.addEventListener('keydown', playhandler)
+
+        function playhandler(e){
+            //play Music
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            if(audio){
+                audio.currentTime = 0 //設這個才能連續播放
+                audio.play();
+            }
             
 
-            function playHandler(e) {
-                //play music
-                const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-                if (audio) {
-                    audio.currentTime = 0;
-                    audio.play();
-                }
+            //DOM
+            const dom = document.querySelector(`div[data-key="${e.keyCode}"]`)
+            if(dom) dom.classList.add('playing')
 
-                //DOM style
-                const dom = document.querySelector(`div[data-key="${e.keyCode}"]`);
-                if (dom) dom.classList.add('playing');
-
-                // console.log(audio, dom);
-            }
-            function transitionendHandler(e) {
-                // console.log(e);
-                if (e.propertyName === 'transform') {
-                    e.currentTarget.classList.remove('playing');
-                    console.log(e.currentTarget);
-                }
-
-            }
-
-            window.addEventListener('keydown', playHandler);
-            document.querySelectorAll('.key').forEach(function (key) {
-                key.addEventListener('transitionend', transitionendHandler);
-            })
-
+            console.log(audio, dom);
             
-        })();
+        }
 
+        document.querySelectorAll('.key').forEach(function(key){
+            key.addEventListener('transitionend', transitionendHandler)
+        })
+
+        function transitionendHandler (e){
+            // console.log(e)
+            if(e.propertyName === 'transform'){
+                e.currentTarget.classList.remove('playing') //把樣式移除
+                // console.log(e.currentTarget)
+            }
+
+        }
+
+
+
+
+       })()
     </script>
 </body>
 

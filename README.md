@@ -25,3 +25,10 @@ kbd是預設標籤，是行內元素，用於表示用戶輸入
 .style.transform = `rotate(0deg)`
 
 連續執行，可以使用setTimeout、setInvertal
+
+
+03.CSS Variables
+
+關於style內容
+
+:root是html選取器; 變數的選取方式是-- ; 在使用時需要加var; 在用變數去記錄資料-->修改畫面; 

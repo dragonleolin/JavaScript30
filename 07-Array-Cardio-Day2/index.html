@@ -87,9 +87,9 @@
     console.log(cart[0], newCart[0]); 
 
     let obj1 = {count: 1}; 
-    let obj2 = obj1;
-    let obj3 = object.assign({}, obj1);
-    obj1.count = 5;
+    let obj2 = obj1; //obj2被指向obj1
+    let obj3 = object.assign({}, obj1);  //把obj1指向到空物件，會是1
+    obj1.count = 5;  //把obj1改成5
     let obj4 = JSON.parse(JSON.stringify(obj2));
     
     console.log(obj1.count + obj2.count + obj3.count + obj4.count)
